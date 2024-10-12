@@ -60,8 +60,8 @@ public class AddAddressSteps {
         myAccountPage.addresses();
     }
 
-    @Given("the uses is on My Addresses page")
-    public void theUsesIsOnMyAddressesPage() {
+    @Given("the user is on My Addresses page")
+    public void theUserIsOnMyAddressesPage() {
         myAddressesPage = new MyAddressesPage(driver);
     }
 
@@ -103,4 +103,6 @@ public class AddAddressSteps {
         assertTrue(addressesByAlias.containsKey(key));
         assertEquals("Głowny Kasztanowa 6 Krakow 30-011 666777888", addressesByAlias.get(key));
     }
+
+
 }

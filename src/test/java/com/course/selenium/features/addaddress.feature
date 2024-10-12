@@ -11,7 +11,7 @@ Feature: User Address
     And the user clicks on Sign In button
     Given the user is on My Account page
     When the user clicks on Addresses button
-    Given the uses is on My Addresses page
+    Given the user is on My Addresses page
     When the user clicks on Create New Address button
     And the user fills the address form with "<alias>", "<address>", "<city>", "<zipCode>", "<phone>"
     And the user click the Save button
@@ -19,5 +19,10 @@ Feature: User Address
     And My addresses page should include the New Address
 
     Examples:
-      | alias   | address       | city    | zipCode | phone     |
-      | Głowny  | Kasztanowa 6  | Krakow  | 30-011  | 666777888 |
+      | alias  | address      | city   | zipCode | phone     |
+      | Głowny | Kasztanowa 6 | Krakow | 30-011  | 666777888 |
+
+  Scenario: Remove previously added address
+    Given the user is on My Addresses page
+    Then the user click the Delete created address button
+    And My addresses page should not contains the removed address
