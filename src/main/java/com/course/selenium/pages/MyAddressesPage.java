@@ -44,15 +44,15 @@ public class MyAddressesPage {
         return alert.getText().strip();
     }
 
-    public Map<String, String> getAddressesByAlias(String alias) {
-        addressesByAlias.clear();
-        for (WebElement element : addresses) {
-            String aliasText = element.findElement(By.cssSelector("h4")).getText();
-            if (aliasText.equals(alias)) {
-                String addressText = element.findElement(By.cssSelector(".address-body")).getText();
-                addressesByAlias.put(alias, addressText);
-            }
-        }
-        return addressesByAlias;
-    }
+//    public Map<String, String> getAddressesByAlias(String alias) {
+//        addressesByAlias.clear();
+//        for (WebElement element : addresses) {
+//            String aliasText = element.findElement(By.cssSelector("h4")).getText();
+//            if (aliasText.equals(alias)) {
+//                String addressText = element.findElement(By.cssSelector(".address-body")).getText();
+//                addressesByAlias.put(alias, addressText);
+//            }
+//        }
+//        return addressesByAlias;
+//    }
 }

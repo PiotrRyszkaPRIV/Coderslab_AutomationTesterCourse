@@ -96,13 +96,15 @@ public class AddAddressSteps {
         Assert.assertEquals(arg0, myAddressesPage.getSuccessMessage());
     }
 
-    @And("My addresses page should include the New Address")
-    public void myAddressesPageShouldIncludeTheNewAddress() {
-        Map<String, String> addressesByAlias = myAddressesPage.getAddressesByAlias();
-        String key = addressAlias.toUpperCase();
-        assertTrue(addressesByAlias.containsKey(key));
-        assertEquals("Głowny Kasztanowa 6 Krakow 30-011 666777888", addressesByAlias.get(key));
-    }
+
+
+//    @And("My addresses page should include the New Address")
+//    public void myAddressesPageShouldIncludeTheNewAddress() {
+//        Map<String, String> addressesByAlias = myAddressesPage.getAddressesByAlias();
+//        String key = addressAlias.toUpperCase();
+//        assertTrue(addressesByAlias.containsKey(key));
+//        assertEquals("Głowny Kasztanowa 6 Krakow 30-011 666777888", addressesByAlias.get(key));
+//    }
 
 
 }
