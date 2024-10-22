@@ -70,10 +70,10 @@ public class AddAddressSteps {
         myAddressesPage.createNewAddress();
     }
 
-//    @And("the user clicks on Add First Address button")
-//    public void theUserClicksOnAddFirstAddressButton() {
-//        myAccountPage.addFirstAddress();
-//    }
+    @And("the user clicks on Add First Address button")
+    public void theUserClicksOnAddFirstAddressButton() {
+        myAccountPage.addFirstAddress();
+    }
 
     @And("the user fills the address form with {string}, {string}, {string}, {string}")
     public void theUserFillsTheAddressFormWith(String address, String city, String zipCode, String phone) {
@@ -105,7 +105,7 @@ public class AddAddressSteps {
         String key = addressAlias.toUpperCase();
         assertTrue(addressesByAlias.containsKey(key));
 
-        assertEquals("Zadanie ZaliczenioweJeden\n" +
+        assertEquals("John Doe\n" +
                 "Kasztanowa 6\n" +
                 "Krakow\n" +
                 "30-011\n" +

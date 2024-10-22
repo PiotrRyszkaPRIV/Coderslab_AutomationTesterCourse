@@ -22,6 +22,22 @@ Feature: User Address
       | address      | city   | zipCode | phone     |
       | Kasztanowa 6 | Krakow | 30-011  | 666777888 |
 
+  Scenario Outline: Add the first user address
+    Given the user is on the login page
+    When the user types an email and password into login input field
+    And the user clicks on Sign In button
+    Given the user is on My Account page
+    When the user clicks on Add First Address button
+    And the user fills the address form with "<address>", "<city>", "<zipCode>", "<phone>"
+    And the user click the Save button
+    Given the user is on My Addresses page
+    Then the user should be on My Addresses page and the My Addresses Page should display confirmation message "Address successfully added!"
+    And My addresses page should include the New Address
+
+    Examples:
+      | address      | city   | zipCode | phone     |
+      | Kasztanowa 6 | Krakow | 30-011  | 666777888 |
+
   Scenario: Remove previously added address
     Given the user is on My Addresses page
     Then the user click the Delete created address button
