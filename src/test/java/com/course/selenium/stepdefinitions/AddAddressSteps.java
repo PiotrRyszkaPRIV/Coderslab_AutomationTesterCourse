@@ -75,10 +75,12 @@ public class AddAddressSteps {
 //        myAccountPage.addFirstAddress();
 //    }
 
-    @And("the user fills the address form with {string}, {string}, {string}, {string}, {string}")
-    public void theUserFillsTheAddressFormWith(String alias, String address, String city, String zipCode, String phone) {
+    @And("the user fills the address form with {string}, {string}, {string}, {string}")
+    public void theUserFillsTheAddressFormWith(String address, String city, String zipCode, String phone) {
+        addressAlias = "Alias" + System.currentTimeMillis();
         addressFormPage = new AddressFormPage(driver);
-        addressFormPage.typeAlias(alias);
+
+        addressFormPage.typeAlias(addressAlias);
         addressFormPage.typeAddressLine(address);
         addressFormPage.typeCity(city);
         addressFormPage.typePostalCode(zipCode);
@@ -92,19 +94,22 @@ public class AddAddressSteps {
 
     @Then("the user should be on My Addresses page and the My Addresses Page should display confirmation message {string}")
     public void theUserShouldBeOnMyAddressesPageAndTheMyAddressesPageShouldDisplayConfirmationMessage(String arg0) {
-
         Assert.assertEquals(arg0, myAddressesPage.getSuccessMessage());
     }
 
+    @And("My addresses page should include the New Address")
+    public void myAddressesPageShouldIncludeTheNewAddress() {
+        myAddressesPage = new MyAddressesPage(driver);
 
+        Map<String, String> addressesByAlias = myAddressesPage.getAddressesByAlias(addressAlias);
+        String key = addressAlias.toUpperCase();
+        assertTrue(addressesByAlias.containsKey(key));
 
-//    @And("My addresses page should include the New Address")
-//    public void myAddressesPageShouldIncludeTheNewAddress() {
-//        Map<String, String> addressesByAlias = myAddressesPage.getAddressesByAlias();
-//        String key = addressAlias.toUpperCase();
-//        assertTrue(addressesByAlias.containsKey(key));
-//        assertEquals("Głowny Kasztanowa 6 Krakow 30-011 666777888", addressesByAlias.get(key));
-//    }
-
-
+        assertEquals("Zadanie ZaliczenioweJeden\n" +
+                "Kasztanowa 6\n" +
+                "Krakow\n" +
+                "30-011\n" +
+                "United Kingdom\n" +
+                "666777888", addressesByAlias.get(key));
+    }
 }

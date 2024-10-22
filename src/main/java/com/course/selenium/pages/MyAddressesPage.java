@@ -1,6 +1,5 @@
 package com.course.selenium.pages;
 
-import com.course.selenium.fragments.AddressPanel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +20,7 @@ public class MyAddressesPage {
     @FindBy(css = ".addresses-footer > a:nth-child(1) > span:nth-child(2)")
     private WebElement createNewAddress;
 
-    @FindBy(css = "address-body")
+    @FindBy(css = ".address-body")
     private List<WebElement> addresses;
     private Map<String, String> addressesByAlias;
 
@@ -31,8 +30,7 @@ public class MyAddressesPage {
         this.driver = driver;
         waitForPageLoaded(driver, By.cssSelector("a.account-link:nth-child(2) > span:nth-child(2)"), "addresses");
         PageFactory.initElements(driver, this);
-        this.addresses = addresses;
-        this.addressesByAlias =new HashMap<>();
+        this.addressesByAlias = new HashMap<>();
     }
 
     public void createNewAddress() {
@@ -44,15 +42,14 @@ public class MyAddressesPage {
         return alert.getText().strip();
     }
 
-//    public Map<String, String> getAddressesByAlias(String alias) {
-//        addressesByAlias.clear();
-//        for (WebElement element : addresses) {
-//            String aliasText = element.findElement(By.cssSelector("h4")).getText();
-//            if (aliasText.equals(alias)) {
-//                String addressText = element.findElement(By.cssSelector(".address-body")).getText();
-//                addressesByAlias.put(alias, addressText);
-//            }
-//        }
-//        return addressesByAlias;
-//    }
+    public Map<String, String> getAddressesByAlias(String alias) {
+        for (WebElement element : addresses) {
+            String aliasText = element.findElement(By.cssSelector("h4")).getText();
+            if (aliasText.equals(alias)) {
+                String addressText = element.findElement(By.cssSelector("address")).getText();
+                addressesByAlias.put(alias.toUpperCase(), addressText);
+            }
+        }
+        return addressesByAlias;
+    }
 }
