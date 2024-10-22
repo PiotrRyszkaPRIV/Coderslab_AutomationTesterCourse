@@ -70,4 +70,15 @@ public class ElementHelper {
         select.selectByValue(text);
     }
 
+        public static void selectCheckbox(WebDriver driver, WebElement checkbox) {
+
+            waitForElementVisible(driver, checkbox, 5);
+
+            if (!checkbox.isSelected()) {
+                checkbox.click();
+            } else {
+                System.out.println("Checkbox is selected");
+            }
+        }
+
 }

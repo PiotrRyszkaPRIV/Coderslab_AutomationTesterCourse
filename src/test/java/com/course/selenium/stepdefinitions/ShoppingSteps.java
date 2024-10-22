@@ -8,9 +8,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 
 public class ShoppingSteps {
 
@@ -83,5 +80,12 @@ public class ShoppingSteps {
     public void theUserConfirmShippingMethodAndClickingContinueButton() {
         orderPage.selectPickUpInStore();
         orderPage.continueToPayment();
+    }
+
+    @And("the user selects pay by check method, confirms terms of service and clicks on place order button")
+    public void theUserSelectsPayByCheckMethodConfirmsTermsOfServiceAndClicksOnPlaceOrderButton() {
+        orderPage.payByCheck();
+        orderPage.confirmTermsOfService();
+        orderPage.placeTheOrder();
     }
 }

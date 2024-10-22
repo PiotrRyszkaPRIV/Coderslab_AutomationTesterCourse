@@ -20,4 +20,5 @@ Feature: User shopping
     Then the user is in shopping cart page
     And the user confirm address by clicking on continue button
     And the user confirm shipping method and clicking continue button
+    And the user selects pay by check method, confirms terms of service and clicks on place order button
 

@@ -5,6 +5,7 @@ Feature: User Address
   Background:
     Given the user is on the HomePage
 
+#    Adding next address if any already exist
   Scenario Outline: Add a new user address
     Given the user is on the login page
     When the user types an email and password into login input field
@@ -22,6 +23,7 @@ Feature: User Address
       | address      | city   | zipCode | phone     |
       | Kasztanowa 6 | Krakow | 30-011  | 666777888 |
 
+#    Adding first user address (there is no My addresses page, Add first address exist instead on My account page
   Scenario Outline: Add the first user address
     Given the user is on the login page
     When the user types an email and password into login input field
