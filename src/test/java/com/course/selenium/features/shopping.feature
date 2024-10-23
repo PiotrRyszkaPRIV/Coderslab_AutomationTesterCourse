@@ -21,4 +21,6 @@ Feature: User shopping
     And the user confirm address by clicking on continue button
     And the user confirm shipping method and clicking continue button
     And the user selects pay by check method, confirms terms of service and clicks on place order button
+    Then the user is on order confirmation page
+    And order confirmation screenshot is taken
 

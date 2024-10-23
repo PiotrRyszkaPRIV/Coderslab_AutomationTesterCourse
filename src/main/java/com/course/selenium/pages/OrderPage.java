@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static com.course.selenium.helpers.ElementHelper.clickButton;
-import static com.course.selenium.helpers.ElementHelper.selectCheckbox;
 import static com.course.selenium.helpers.SeleniumHelper.waitForPageLoaded;
 
 public class OrderPage {
@@ -21,7 +20,7 @@ public class OrderPage {
     WebElement continueToPaymentButton;
     @FindBy(css = "#payment-option-1-container > span:nth-child(1)")
     WebElement selectPayByCheck;
-    @FindBy(css = ".custom-checkbox > span:nth-child(2)")
+    @FindBy(css = "input[id='conditions_to_approve[terms-and-conditions]']")
     WebElement confirmTermsOfService;
     @FindBy(css = "div.ps-shown-by-js > button:nth-child(1)")
     WebElement placeTheOrderButton;
@@ -46,15 +45,15 @@ public class OrderPage {
     }
 
     public void payByCheck() {
-        clickButton(driver, selectPayByCheck);
+        selectPayByCheck.click();
     }
 
     public void confirmTermsOfService() {
-        selectCheckbox(driver, confirmTermsOfService);
+        confirmTermsOfService.click();
     }
 
     public void placeTheOrder() {
-        clickButton(driver, placeTheOrderButton);
+        placeTheOrderButton.click();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.course.selenium.stepdefinitions;
 
+import com.course.selenium.helpers.ScreenshotHelper;
 import com.course.selenium.hooks.Hooks;
 import com.course.selenium.pages.*;
 import io.cucumber.java.en.And;
@@ -22,8 +23,11 @@ public class ShoppingSteps {
     private HummingbirdPrintedSweaterPage hummingbirdPrintedSweaterPage;
     private ShoppingCartPage shoppingCartPage;
     private OrderPage orderPage;
+    private OrderConfirmationPage orderConfirmationPage;
 
     private String addressAlias;
+    private ScreenshotHelper screenshotHelper;
+
 
     @When("the user types item name into search bar")
     public void theUserTypesItemNameIntoSearchBar() {
@@ -87,5 +91,16 @@ public class ShoppingSteps {
         orderPage.payByCheck();
         orderPage.confirmTermsOfService();
         orderPage.placeTheOrder();
+    }
+
+    @Then("the user is on order confirmation page")
+    public void theUserIsOnOrderConfirmationPage() {
+        orderConfirmationPage = new OrderConfirmationPage(driver);
+    }
+
+    @And("order confirmation screenshot is taken")
+    public void orderConfirmationScreenshotIsTaken() {
+        orderConfirmationPage.takeScreenshot();
+        orderConfirmationPage.takeFullPageScreenshot();
     }
 }
